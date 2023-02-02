@@ -21,12 +21,11 @@ class MinimalSubscriber : public rclcpp::Node
     void topic_callback(const tutorial_interfaces::msg::Num::SharedPtr msg) const
     {
        RCLCPP_INFO(this->get_logger(), "I heard: '%d'", msg->num);
-       // 使用RCL_INFO将 响应的信息 显示到控制台上
     }
   
    rclcpp::Subscription<tutorial_interfaces::msg::Num>::SharedPtr subscription_;
    // 用于接受 tutorial_interfaces::msg::Num 消息类型 的 订阅器
-   // 订阅器没有 timer，因为定阅器在任意时刻都响应 发布器 发布的消息
+   // 定阅器在任意时刻都响应 发布器 发布的消息
 };
 
 int main(int argc, char * argv[])
