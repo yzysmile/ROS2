@@ -1,0 +1,26 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/yzyrobot/dev_ws/install/turtlesim/include/**",
+        "/opt/ros/galactic/include/**",
+        "/home/yzyrobot/dev_ws/src/ROS2_example_mygithub/ROS2/action/example_action_rclcpp/include/**",
+        "/home/yzyrobot/dev_ws/src/cpp_pubsub/include/**",
+        "/home/yzyrobot/dev_ws/src/cpp_srvcli/include/**",
+        "/home/yzyrobot/dev_ws/src/my_package/include/**",
+        "/home/yzyrobot/dev_ws/src/ros_tutorials/turtlesim/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

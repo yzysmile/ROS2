@@ -4,10 +4,14 @@
 
 class ActionControl01 : public rclcpp::Node {
  public:
-  // action 接口
+  // action 接口（协议）
   using MoveRobot = robot_control_interfaces::action::MoveRobot;
   
-  // 客户端与目标相关的内容：包括目标
+  // Class for interacting with goals sent from action clients.
+  // Use this class to check the status of a goal as well as get the result.
+  // This class is not meant to be created by a user, instead it is created when a goal has been accepted. 
+  // A Client will create an instance and return it to the user (via a future) after calling Client::async_send_goal.
+  // 该类在客户端调用 async_send_goal(...) 自动实例化 
   using GoalHandleMoveRobot = rclcpp_action::ClientGoalHandle<MoveRobot>;
 
   explicit ActionControl01(std::string name):Node(name){
@@ -47,8 +51,15 @@ class ActionControl01 : public rclcpp::Node {
      
      // result: 函数参数为接收1个来自 服务端的 result
     send_goal_options.result_callback = std::bind(&ActionControl01::result_callback, this, _1);
-
+     
+     // service中  客户端是 模板类rclcpp::Client< ServiceT > Class的对象
+     // action中   客户端是 模板类rclcpp_action::Client< ActionT > Class的对象
     this->client_ptr_->async_send_goal(goal_msg, send_goal_options);
+     // 对应的 取消 goal的函数是：
+     // std::shared_future<typename CancelResponse::SharedPtr> rclcpp_action::Client< ActionT >::async_cancel_goal( typename GoalHandle::SharedPtr 	goal_handle,
+     //                                                                                                             CancelCallback 	cancel_callback = nullptr 
+     //                                                                                                           )	
+     // 调用时的实参为： GoalHandleMoveRobot::SharedPtr move_goal_handle_
   }
 
   private:
@@ -56,8 +67,12 @@ class ActionControl01 : public rclcpp::Node {
    rclcpp::TimerBase::SharedPtr timer_;
 
    // client's three callback func
-    // goal_response_callback，发送目标后得到的响应 的回调函数
+    // goal_response_callback，发送goal后得到的服务端响应 的回调函数
    void goal_response_callback(GoalHandleMoveRobot::SharedPtr goal_handle){
+    // this->client_ptr_->async_send_goal(goal_msg, send_goal_options)，返回一个std::shared_future对象
+    // 该shared_future对象储存的是一个 GoalHandle
+      // If the goal is accepted by an action server, the returned future is set to a ClientGoalHandle. 
+      // If the goal is rejected by an action server, then the future is set to a nullptr.
      if (!goal_handle){
         RCLCPP_ERROR(this->get_logger(), "Goal was rejected by server");
      } else{
@@ -66,7 +81,8 @@ class ActionControl01 : public rclcpp::Node {
    }
 
     // feedback_callback，执行过程中进度反馈 接收回调函数
-   void feedback_callback(GoalHandleMoveRobot::SharedPtr, const std::shared_ptr<const MoveRobot::Feedback> feedback){
+   void feedback_callback(GoalHandleMoveRobot::SharedPtr, 
+                          const std::shared_ptr<const MoveRobot::Feedback> feedback){
     RCLCPP_INFO(this->get_logger(), "Feedback current pose:%f", feedback->pose);
    }
 
@@ -90,8 +106,7 @@ class ActionControl01 : public rclcpp::Node {
       }
 
       RCLCPP_INFO(this->get_logger(), "Result received: %f", result.result->pose);
-    }
-;
+    };
 
 int main(int argc, char** argv){
   rclcpp::init(argc, argv);

@@ -27,6 +27,8 @@ float Robot::get_current_pose() const { return current_pose_; }
 
 int Robot::get_status() const { return status_; }
 
+// if fabs(target_pose_ - current_pose_) < 0.01, this func return true
+// else this func return false 
 bool Robot::close_goal() { return fabs(target_pose_ - current_pose_) < 0.01; }
 
 void Robot::stop_move() {
