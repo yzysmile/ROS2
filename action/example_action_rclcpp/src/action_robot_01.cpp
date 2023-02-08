@@ -6,14 +6,12 @@
 // create a ActionSever Class
 class ActionRobot01 : public rclcpp::Node {
  public:
-  // action 接口（协议）
+
+  // action protocol
   using MoveRobot = robot_control_interfaces::action::MoveRobot;
 
-  // Class to interact with goals on a server. 
-  // Use this class to check the status of a goal as well as set the result.
-  // This class is not meant to be created by a user, instead it is created when a goal has been accepted. 
-  // A Server will create an instance and give it to the user in their handle_accepted callback.
-  // 该类在接受 客户端的goal后 自动实例化 
+  // GoalHandleMoveRobot is used to interact with the action server
+
   using GoalHandleMoveRobot = rclcpp_action::ServerGoalHandle<MoveRobot>;
 
   explicit ActionRobot01(std::string name) : Node(name){
@@ -75,8 +73,8 @@ class ActionRobot01 : public rclcpp::Node {
 
     // 是客户端 实际执行goal的函数，被封装在 handle_accepted(...) 回调函数中
     void execute_move(const std::shared_ptr<GoalHandleMoveRobot> goal_handle) {
-    // const std::shared_ptr< const typename ActionT::Goal > 	get_goal () const
-    // Get the user provided message describing the goal.
+    // is_canceling() is a member func of template class "rclcpp_action::ServerGoalHandle<ActionT>"
+
     const auto goal = goal_handle->get_goal();
     RCLCPP_INFO(this->get_logger(), "The robot start move %f ...", goal->distance);
 
@@ -84,27 +82,26 @@ class ActionRobot01 : public rclcpp::Node {
     // 客户端调用 result_callback? 
     auto result = std::make_shared<MoveRobot::Result>();
 
-    // Rate函数 来精准控制循环的周期，让其保持为2HZ
+
+    // Rate obj controls frenquence preciously in "while" cycle
     rclcpp::Rate rate = rclcpp::Rate(2);
 
     robot.set_goal(goal->distance);
     
-    // 采用了while循环的形式，获取机器人位置 并 发布反馈（publish_feedback）机器人的位置
-    // rate 用于控制 获取机器人的位置 和 发布反馈的 频率
-    // 同时检测任务是否被取消，如顺利执行完成则反馈最终结果。
+    // call robotObj's member function to get robotObj's pose currently, publish feedback and detect the goal is canced or finish continuously
     while (rclcpp::ok() && !robot.close_goal()) {
       robot.move_step();
 
       auto feedback = std::make_shared<MoveRobot::Feedback>();
       feedback->pose = robot.get_current_pose();
       feedback->status = robot.get_status();
-      
-      // 服务端发布 反馈， 客户端 执行 相应回调
+      // topic
+      // publish_feedback() is a member func of template class "rclcpp_action::ServerGoalHandle<ActionT>"
       goal_handle->publish_feedback(feedback);
 
-      // bool rclcpp_action::ServerGoalHandleBase::is_canceling	(		)	const
-       // Indicate if client has requested this goal be cancelled.
-       // true if a cancelation request has been accepted for this goal.
+      /* detect the mission cancel or not */
+      // is_canceling() is a member func of template class "rclcpp_action::ServerGoalHandle<ActionT>"
+
       if (goal_handle->is_canceling()) {
         result->pose = robot.get_current_pose();
         
@@ -128,10 +125,7 @@ class ActionRobot01 : public rclcpp::Node {
     goal_handle->succeed(result);
     RCLCPP_INFO(this->get_logger(), "Goal Succeeded");
   }
-
-  // 客户端发送 目标后，action_server_ 调用handle_goal()回调 若接受客户端目标并ACCEPT后，
-  // 此时 rclcpp_action::ServerGoalHandle< ActionT >模板类对象 将会被自动创建， 
-  // 并且传入 handle_accepted(...)作为该回调函数的实参  
+  // the func runs automatically when "handle_goal" accept a request and the func named "execute_move" runs in another thread 
   void handle_accepted(const std::shared_ptr<GoalHandleMoveRobot> goal_handle) {
     using std::placeholders::_1;
     std::thread{std::bind(&ActionRobot01::execute_move, this, _1), goal_handle}
