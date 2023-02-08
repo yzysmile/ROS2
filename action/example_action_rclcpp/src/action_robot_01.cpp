@@ -6,11 +6,10 @@
 // create a ActionSever Class
 class ActionRobot01 : public rclcpp::Node {
  public:
-  // action 接口
+  // action protocol
   using MoveRobot = robot_control_interfaces::action::MoveRobot;
 
-  // GoalHandleMoveRobot is a server of a specific action (is a template class)
-  // 服务端, MoveRobot为action
+  // GoalHandleMoveRobot is used to interact with the action server
   using GoalHandleMoveRobot = rclcpp_action::ServerGoalHandle<MoveRobot>;
 
   explicit ActionRobot01(std::string name) : Node(name){
@@ -71,17 +70,17 @@ class ActionRobot01 : public rclcpp::Node {
 
     
     void execute_move(const std::shared_ptr<GoalHandleMoveRobot> goal_handle) {
-    // get_goal() 是 模板类 rclcpp_action::ServerGoalHandle<MoveRobot> 的 成员函数 
+    // is_canceling() is a member func of template class "rclcpp_action::ServerGoalHandle<ActionT>"
     const auto goal = goal_handle->get_goal();
     RCLCPP_INFO(this->get_logger(), "The robot start move %f ...", goal->distance);
 
     auto result = std::make_shared<MoveRobot::Result>();
-    // Rate函数 来精准控制循环的周期，让其保持为2HZ
+
+    // Rate obj controls frenquence preciously in "while" cycle
     rclcpp::Rate rate = rclcpp::Rate(2);
     robot.set_goal(goal->distance);
     
-    // 这里采用了while循环的形式，不断 调用机器人移动并获取机器人的位置，client自動調用feedback进行反馈。
-    // 同时检测任务是否被取消，如顺利执行完成则反馈最终结果。
+    // call robotObj's member function to get robotObj's pose currently, publish feedback and detect the goal is canced or finish continuously
     while (rclcpp::ok() && !robot.close_goal()) {
       robot.move_step();
 
@@ -90,11 +89,11 @@ class ActionRobot01 : public rclcpp::Node {
       feedback->status = robot.get_status();
 
       // topic
-      // publish_feedback() 是 模板类 rclcpp_action::ServerGoalHandle<MoveRobot> 的 成员函数 
+      // publish_feedback() is a member func of template class "rclcpp_action::ServerGoalHandle<ActionT>"
       goal_handle->publish_feedback(feedback);
 
       /* detect the mission cancel or not */
-       // is_canceling() 是 模板类 rclcpp_action::ServerGoalHandle<MoveRobot> 的 成员函数 
+      // is_canceling() is a member func of template class "rclcpp_action::ServerGoalHandle<ActionT>"
       if (goal_handle->is_canceling()) {
         result->pose = robot.get_current_pose();
 
@@ -111,7 +110,7 @@ class ActionRobot01 : public rclcpp::Node {
     RCLCPP_INFO(this->get_logger(), "Goal Succeeded");
   }
 
-  // 当handle_goal中对 移动请求 ACCEPT后 则进入到这里进行执行，这里是单独开了个线程进行执行execute_move函数，目的是避免阻塞主线程。
+  // the func runs automatically when "handle_goal" accept a request and the func named "execute_move" runs in another thread 
   void handle_accepted(const std::shared_ptr<GoalHandleMoveRobot> goal_handle) {
     using std::placeholders::_1;
     std::thread{std::bind(&ActionRobot01::execute_move, this, _1), goal_handle}
