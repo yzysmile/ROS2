@@ -1,0 +1,121 @@
+[0.083s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--packages-select', 'tutorial_interfaces']
+[0.083s] DEBUG:colcon:Parsed command line arguments: Namespace(allow_overriding=[], ament_cmake_args=None, base_paths=['.'], build_base='build', catkin_cmake_args=None, catkin_skip_building_tests=False, cmake_args=None, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, cmake_target=None, cmake_target_skip_unavailable=False, continue_on_error=False, event_handlers=None, executor='parallel', ignore_user_meta=False, install_base='install', log_base=None, log_level=None, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7fa4e4d9b7c0>>, merge_install=False, metas=['./colcon.meta'], packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_end=None, packages_ignore=None, packages_ignore_regex=None, packages_select=['tutorial_interfaces'], packages_select_build_failed=False, packages_select_by_dep=None, packages_select_regex=None, packages_select_test_failures=False, packages_skip=None, packages_skip_build_finished=False, packages_skip_by_dep=None, packages_skip_regex=None, packages_skip_test_passed=False, packages_skip_up_to=None, packages_start=None, packages_up_to=None, packages_up_to_regex=None, parallel_workers=16, paths=None, symlink_install=False, test_result_base=None, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7fa4e4d9b7c0>, verb_name='build', verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7fa4e4dad4c0>)
+[0.097s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.097s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.097s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.097s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.097s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.097s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.097s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/yzyrobot/dev_ws/src/tutorial_interfaces'
+[0.097s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.097s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.097s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.098s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.098s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.098s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.098s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.098s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.098s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.105s] DEBUG:colcon.colcon_core.package_identification:Package '.' with type 'ros.ament_cmake' and name 'tutorial_interfaces'
+[0.105s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.105s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.105s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.105s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.105s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.121s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.121s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.123s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 272 installed packages in /opt/ros/galactic
+[0.124s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.165s] Level 5:colcon.colcon_core.verb:set package 'tutorial_interfaces' build argument 'cmake_args' from command line to 'None'
+[0.165s] Level 5:colcon.colcon_core.verb:set package 'tutorial_interfaces' build argument 'cmake_target' from command line to 'None'
+[0.165s] Level 5:colcon.colcon_core.verb:set package 'tutorial_interfaces' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.165s] Level 5:colcon.colcon_core.verb:set package 'tutorial_interfaces' build argument 'cmake_clean_cache' from command line to 'False'
+[0.165s] Level 5:colcon.colcon_core.verb:set package 'tutorial_interfaces' build argument 'cmake_clean_first' from command line to 'False'
+[0.165s] Level 5:colcon.colcon_core.verb:set package 'tutorial_interfaces' build argument 'cmake_force_configure' from command line to 'False'
+[0.165s] Level 5:colcon.colcon_core.verb:set package 'tutorial_interfaces' build argument 'ament_cmake_args' from command line to 'None'
+[0.165s] Level 5:colcon.colcon_core.verb:set package 'tutorial_interfaces' build argument 'catkin_cmake_args' from command line to 'None'
+[0.165s] Level 5:colcon.colcon_core.verb:set package 'tutorial_interfaces' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.165s] DEBUG:colcon.colcon_core.verb:Building package 'tutorial_interfaces' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/yzyrobot/dev_ws/src/tutorial_interfaces/build/tutorial_interfaces', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces', 'merge_install': False, 'path': '/home/yzyrobot/dev_ws/src/tutorial_interfaces', 'symlink_install': False, 'test_result_base': None}
+[0.166s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.168s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.168s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/yzyrobot/dev_ws/src/tutorial_interfaces' with build type 'ament_cmake'
+[0.168s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/yzyrobot/dev_ws/src/tutorial_interfaces'
+[0.171s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.171s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.171s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.177s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/yzyrobot/dev_ws/src/tutorial_interfaces/build/tutorial_interfaces': CMAKE_PREFIX_PATH=/opt/ros/galactic /usr/bin/cmake /home/yzyrobot/dev_ws/src/tutorial_interfaces -DCMAKE_INSTALL_PREFIX=/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces
+[1.250s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/yzyrobot/dev_ws/src/tutorial_interfaces/build/tutorial_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/galactic /usr/bin/cmake /home/yzyrobot/dev_ws/src/tutorial_interfaces -DCMAKE_INSTALL_PREFIX=/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces
+[1.250s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/yzyrobot/dev_ws/src/tutorial_interfaces/build/tutorial_interfaces': CMAKE_PREFIX_PATH=/opt/ros/galactic /usr/bin/cmake --build /home/yzyrobot/dev_ws/src/tutorial_interfaces/build/tutorial_interfaces -- -j16 -l16
+[3.071s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/yzyrobot/dev_ws/src/tutorial_interfaces/build/tutorial_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/galactic /usr/bin/cmake --build /home/yzyrobot/dev_ws/src/tutorial_interfaces/build/tutorial_interfaces -- -j16 -l16
+[3.115s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/yzyrobot/dev_ws/src/tutorial_interfaces/build/tutorial_interfaces': CMAKE_PREFIX_PATH=/opt/ros/galactic /usr/bin/cmake --install /home/yzyrobot/dev_ws/src/tutorial_interfaces/build/tutorial_interfaces
+[3.151s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(tutorial_interfaces)
+[3.152s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/yzyrobot/dev_ws/src/tutorial_interfaces/build/tutorial_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/galactic /usr/bin/cmake --install /home/yzyrobot/dev_ws/src/tutorial_interfaces/build/tutorial_interfaces
+[3.155s] Level 1:colcon.colcon_core.environment:checking '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces' for CMake module files
+[3.155s] Level 1:colcon.colcon_core.environment:checking '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces' for CMake config files
+[3.155s] Level 1:colcon.colcon_core.shell:create_environment_hook('tutorial_interfaces', 'cmake_prefix_path')
+[3.156s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/hook/cmake_prefix_path.ps1'
+[3.157s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/hook/cmake_prefix_path.dsv'
+[3.157s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/hook/cmake_prefix_path.sh'
+[3.157s] Level 1:colcon.colcon_core.environment:checking '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/lib'
+[3.157s] Level 1:colcon.colcon_core.shell:create_environment_hook('tutorial_interfaces', 'ld_library_path_lib')
+[3.158s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/hook/ld_library_path_lib.ps1'
+[3.158s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/hook/ld_library_path_lib.dsv'
+[3.159s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/hook/ld_library_path_lib.sh'
+[3.159s] Level 1:colcon.colcon_core.environment:checking '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/bin'
+[3.159s] Level 1:colcon.colcon_core.environment:checking '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/lib/pkgconfig/tutorial_interfaces.pc'
+[3.159s] Level 1:colcon.colcon_core.environment:checking '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/lib/python3.8/site-packages'
+[3.159s] Level 1:colcon.colcon_core.shell:create_environment_hook('tutorial_interfaces', 'pythonpath')
+[3.160s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/hook/pythonpath.ps1'
+[3.160s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/hook/pythonpath.dsv'
+[3.160s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/hook/pythonpath.sh'
+[3.160s] Level 1:colcon.colcon_core.environment:checking '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/bin'
+[3.161s] INFO:colcon.colcon_core.shell:Creating package script '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/package.ps1'
+[3.162s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/package.dsv'
+[3.162s] INFO:colcon.colcon_core.shell:Creating package script '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/package.sh'
+[3.162s] INFO:colcon.colcon_core.shell:Creating package script '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/package.bash'
+[3.163s] INFO:colcon.colcon_core.shell:Creating package script '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/package.zsh'
+[3.163s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/colcon-core/packages/tutorial_interfaces)
+[3.203s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(tutorial_interfaces)
+[3.204s] Level 1:colcon.colcon_core.environment:checking '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces' for CMake module files
+[3.204s] Level 1:colcon.colcon_core.environment:checking '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces' for CMake config files
+[3.204s] Level 1:colcon.colcon_core.shell:create_environment_hook('tutorial_interfaces', 'cmake_prefix_path')
+[3.205s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/hook/cmake_prefix_path.ps1'
+[3.205s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/hook/cmake_prefix_path.dsv'
+[3.206s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/hook/cmake_prefix_path.sh'
+[3.206s] Level 1:colcon.colcon_core.environment:checking '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/lib'
+[3.206s] Level 1:colcon.colcon_core.shell:create_environment_hook('tutorial_interfaces', 'ld_library_path_lib')
+[3.207s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/hook/ld_library_path_lib.ps1'
+[3.207s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/hook/ld_library_path_lib.dsv'
+[3.207s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/hook/ld_library_path_lib.sh'
+[3.207s] Level 1:colcon.colcon_core.environment:checking '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/bin'
+[3.207s] Level 1:colcon.colcon_core.environment:checking '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/lib/pkgconfig/tutorial_interfaces.pc'
+[3.207s] Level 1:colcon.colcon_core.environment:checking '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/lib/python3.8/site-packages'
+[3.207s] Level 1:colcon.colcon_core.shell:create_environment_hook('tutorial_interfaces', 'pythonpath')
+[3.208s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/hook/pythonpath.ps1'
+[3.208s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/hook/pythonpath.dsv'
+[3.208s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/hook/pythonpath.sh'
+[3.209s] Level 1:colcon.colcon_core.environment:checking '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/bin'
+[3.210s] INFO:colcon.colcon_core.shell:Creating package script '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/package.ps1'
+[3.210s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/package.dsv'
+[3.210s] INFO:colcon.colcon_core.shell:Creating package script '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/package.sh'
+[3.210s] INFO:colcon.colcon_core.shell:Creating package script '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/package.bash'
+[3.211s] INFO:colcon.colcon_core.shell:Creating package script '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/tutorial_interfaces/package.zsh'
+[3.211s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/tutorial_interfaces/share/colcon-core/packages/tutorial_interfaces)
+[3.211s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[3.211s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[3.211s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[3.211s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[3.215s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[3.215s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[3.215s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[3.225s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[3.225s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/local_setup.ps1'
+[3.226s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/_local_setup_util_ps1.py'
+[3.226s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/setup.ps1'
+[3.227s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/local_setup.sh'
+[3.227s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/_local_setup_util_sh.py'
+[3.228s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/setup.sh'
+[3.228s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/local_setup.bash'
+[3.229s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/setup.bash'
+[3.229s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/local_setup.zsh'
+[3.229s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/yzyrobot/dev_ws/src/tutorial_interfaces/install/setup.zsh'

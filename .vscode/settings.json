@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
 <<<<<<< HEAD
     "python.autoComplete.extraPaths": [
@@ -78,3 +79,5 @@
     "cmake.sourceDirectory": "${workspaceFolder}/service"
 >>>>>>> action/dev
 }
+=======
+>>>>>>> 946dfb0616528720e2d3dd42dc269d3df87065df

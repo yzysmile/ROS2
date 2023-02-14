@@ -73,6 +73,10 @@ class ActionRobot01 : public rclcpp::Node {
 
     // 是客户端 实际执行goal的函数，被封装在 handle_accepted(...) 回调函数中
     void execute_move(const std::shared_ptr<GoalHandleMoveRobot> goal_handle) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 946dfb0616528720e2d3dd42dc269d3df87065df
     // is_canceling() is a member func of template class "rclcpp_action::ServerGoalHandle<ActionT>"
 
     const auto goal = goal_handle->get_goal();
@@ -82,12 +86,19 @@ class ActionRobot01 : public rclcpp::Node {
     // 客户端调用 result_callback? 
     auto result = std::make_shared<MoveRobot::Result>();
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 946dfb0616528720e2d3dd42dc269d3df87065df
     // Rate obj controls frenquence preciously in "while" cycle
     rclcpp::Rate rate = rclcpp::Rate(2);
 
     robot.set_goal(goal->distance);
     
+<<<<<<< HEAD
+=======
+
+>>>>>>> 946dfb0616528720e2d3dd42dc269d3df87065df
     // call robotObj's member function to get robotObj's pose currently, publish feedback and detect the goal is canced or finish continuously
     while (rclcpp::ok() && !robot.close_goal()) {
       robot.move_step();
@@ -95,6 +106,10 @@ class ActionRobot01 : public rclcpp::Node {
       auto feedback = std::make_shared<MoveRobot::Feedback>();
       feedback->pose = robot.get_current_pose();
       feedback->status = robot.get_status();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 946dfb0616528720e2d3dd42dc269d3df87065df
       // topic
       // publish_feedback() is a member func of template class "rclcpp_action::ServerGoalHandle<ActionT>"
       goal_handle->publish_feedback(feedback);
@@ -125,6 +140,11 @@ class ActionRobot01 : public rclcpp::Node {
     goal_handle->succeed(result);
     RCLCPP_INFO(this->get_logger(), "Goal Succeeded");
   }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 946dfb0616528720e2d3dd42dc269d3df87065df
   // the func runs automatically when "handle_goal" accept a request and the func named "execute_move" runs in another thread 
   void handle_accepted(const std::shared_ptr<GoalHandleMoveRobot> goal_handle) {
     using std::placeholders::_1;

@@ -43,17 +43,50 @@ int main(int argc, char **argv)
    // spin_until_future_complete(node, result) 首先spin这个node（确保这个node没有添加过执行器），
    // 且等待这个node发送request后得到的response
   if (rclcpp::spin_until_future_complete(node, result) ==
-    rclcpp::executor::FutureReturnCode::SUCCESS)
-  {
+    rclcpp::executor::FutureReturnCode::SUCCESS){
     RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Sum: %ld", result.get()->sum);
-  } 
-
-  else
-   {
+  } else{
     RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "Failed to call service add_three_ints");
-   }
+  }
 
   rclcpp::shutdown();
   return 0;
 }
 
+template<typename T>
+class MinimalClient : public rclcpp::Node
+{
+   public:
+     MinimalClient():Node("add_three_T_client")
+     { 
+       client_ = this->create_client<tutorial_interfaces::srv::AddThreeInts>("add_three_ints");
+     }
+    
+    void sendAsynRequest(T a,T b,T c)
+    {
+      auto request = std::make_shared<tutorial_interfaces::srv::AddThreeInts::Request>();
+      // This should be added a transform if intput T isn't int
+      request->a = a;
+      request->b = b;
+      request->c = c;
+
+      while (!client->wait_for_service(1s)) {
+        if (!rclcpp::ok()) {
+          RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "Interrupted while waiting for the service. Exiting.");
+          return 0;
+        }
+        RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "service not available, waiting again...");
+      }
+      auto result = client_->async_send_request(request);
+
+      if (rclcpp::spin_until_future_complete(this, result) ==
+        rclcpp::executor::FutureReturnCode::SUCCESS){
+        RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Sum: %ld", result.get()->sum);
+      } else{
+        RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "Failed to call service add_three_ints");
+      }
+    }
+
+   private:
+      rclcpp::Client<tutorial_interfaces::srv::AddThreeInts>::SharedPtr client_ {nullptr};
+}
